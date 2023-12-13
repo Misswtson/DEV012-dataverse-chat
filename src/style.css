@@ -168,7 +168,7 @@ h2 {
 h3{
   padding: 20px;
   text-align: center; 
-
+}
 .compute-stats {
   font-size: 17px;
   color: rgb(255, 255, 255);
@@ -176,11 +176,11 @@ h3{
   padding: 5px 0px;
   background-color: rgb(40, 40, 40);
 }
-#noResultsFound{
-  padding-top: 20px opx;
+#noResultsFound {
+  padding-top: 20px;
   
 }
-.chatmss{
+.chatmss {
   font-size: 17px;
   color:#ec004a;
   text-align: center;
@@ -268,7 +268,7 @@ dd[itemprop="year"] {
 .apiText{
   color:#010101;
 }
-#saveApiButton, #clearApiButton{
+#saveApiButton, #clearApiButton {
   font-size: 15px;
   font-weight: bold;
   border: none;

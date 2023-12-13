@@ -30,36 +30,35 @@ const renderView = (pathname, properties = {}) => {
   // find the correct view in ROUTES for the pathname
   if (ROUTES[pathname]) {
     const template = ROUTES[pathname](properties);
-   // root.appendChild(template);
+    // root.appendChild(template);
   } else {
     root.appendChild(ROUTES["/errorPage"](properties));
-}
-    // in case not found render the error view
-    // render the correct view passing the value of props
-    // add the view element to the DOM root element
-  } 
-  
-  export const navigateTo = (pathname, properties = {}) => {
-    // update window history with pushState
-    const URLvisited = pathname; // our Hostname would be localhost:3000
-    console.log (navigateTo);
-    history.pushState({}, "", URLvisited); 
-
-    // render the view with the pathname and props
-    renderView(pathname, properties);
-  }
-  
-  export const onURLChange = (location) => {
-    // parse the location for the pathname and search params
-    // convert the search params to an object
-    // render the view with the pathname and object
-    renderView(location);
   }
   // in case not found render the error view
   // render the correct view passing the value of props
   // add the view element to the DOM root element
 };
 
+/*export const navigateTo = (pathname, properties = {}) => {
+  // update window history with pushState
+  const URLvisited = pathname; // our Hostname would be localhost:3000
+  console.log(navigateTo);
+  history.pushState({}, "", URLvisited);
+
+  // render the view with the pathname and props
+  renderView(pathname, properties);
+};
+
+export const onURLChange = (location) => {
+  // parse the location for the pathname and search params
+  // convert the search params to an object
+  // render the view with the pathname and object
+  renderView(location);
+};
+// in case not found render the error view
+// render the correct view passing the value of props
+// add the view element to the DOM root element
+*/
 export const navigateTo = (pathname, properties = {}) => {
   // update window history with pushState
   const URLvisited = window.location.hostname + pathname; // our Hostname would be localhost:3000
