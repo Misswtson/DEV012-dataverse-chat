@@ -238,6 +238,7 @@ dd[itemprop="year"] {
   left: 240px;
   letter-spacing: 1px;
 }
+
 /* CHAT IA COMPONENT*/
 
 .chatContainer {
@@ -249,7 +250,7 @@ dd[itemprop="year"] {
 .chatBox {
   width: 900px;
   height: 800px;
-  background-color: #fcfcfc;
+  background-color: #dbd6d6;
   overflow: hidden;
   border-radius: 10px;
   margin: 40px 40px 40px 60px;
@@ -270,6 +271,7 @@ dd[itemprop="year"] {
 }
 .user h4{
   color: white;
+  font-size: 30px;
   padding: 15px;
 }
 .chats{
@@ -306,7 +308,7 @@ dd[itemprop="year"] {
   padding: 15px;
   overflow: hidden;
   position: absolute;
-  bottom: 0; /*0*/
+  bottom: 0;
 }
 .inputChat input {
   width: 85%;

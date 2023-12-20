@@ -1,4 +1,3 @@
-//import {navigateTo} from "../router";
 
 // Renderizar el Header en las distinas vistas
 export const header = () => {
