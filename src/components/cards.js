@@ -25,9 +25,9 @@ export const renderData = (data) => { //el ciclo es independiente del html
     nodoCards.addEventListener("click", (e) => {
     e.preventDefault();
     if (savedApi === null) {
-    navigateTo("/password");
+    navigateTo("/details");
     }else {
-    navigateTo("/details", element);
+    navigateTo("/pasword", element);
     }
     });
 

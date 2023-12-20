@@ -43,19 +43,17 @@ export const home = () => {
   searchInput.addEventListener('input', () => {
     const inputSearchValue = searchInput.value.toLowerCase();
     const filteredDataByName = searchByName(data, 'input', inputSearchValue);
-    if (inputSearchValue === '') {
-      noResultsFoundContainer.textContent = '';
+    if (inputSearchValue === "") {
+      noResultsFoundContainer.textContent = "";
     } else if (filteredDataByName.length === 0) {
       noResultsFoundContainer.textContent = 'Lo sentimos, no se encontraron resultados que coincidan con la búsqueda.';
     }
-    allCards.innerHTML = '';
+    allCards.innerHTML = "";
     allCards.appendChild(renderData(filteredDataByName));
-    computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(
-      filteredDataByName,
-    )}`;
-    genre.value = '';
-    studio.value = '';
-    year.value = '';
+    computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(filteredDataByName,)}`;
+    genre.value = "";
+    studio.value = "";
+    year.value = "";
   });
 
 //Genre filter
@@ -79,7 +77,7 @@ genre.addEventListener("change", (e) => {
     cumulativeFilter = filterByStudio(data, 'studio', studioSelected);
     allCards.innerHTML = '';
     allCards.appendChild(renderData(cumulativeFilter));
-    computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(cumulativeFilter)}`;
+    computeStatsContainer.textContent = "Resultados encontrados " + computeStats(cumulativeFilter);
     genre.value = '';
     year.value = '';
   });
@@ -91,7 +89,7 @@ genre.addEventListener("change", (e) => {
     cumulativeFilter = filterByYear(data, 'year', yearSelected);
     allCards.innerHTML = '';
     allCards.appendChild(renderData(cumulativeFilter));
-    computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(cumulativeFilter)}`;
+    computeStatsContainer.textContent = "Resultados encontrados " + computeStats(cumulativeFilter);
     genre.value = '';
     studio.value = '';
   });
@@ -103,28 +101,27 @@ genre.addEventListener("change", (e) => {
     cumulativeFilter = sortData(cumulativeFilter, 'name', selectedOrder);
     allCards.innerHTML = '';
     allCards.appendChild(renderData(cumulativeFilter));
-    computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(cumulativeFilter)}`;
+    computeStatsContainer.textContent = "Resultados encontrados " + computeStats(cumulativeFilter);
   });
 
   // Restablece los valores de los selectores, el campo de búsqueda y los contenedores relacionados con la búsqueda
 
   const clearButton = section.querySelector('#button');
-  clearButton.addEventListener('click', () => {
+  clearButton.addEventListener('click', function() {
     const filterSelectors = section.querySelectorAll('select');
-    const searchInputField = section.querySelector('[name="searchButton"]');
     filterSelectors.forEach((selector) => {
       selector.value = selector.options[0].value;
-      searchInputField.value = '';
-      noResultsFoundContainer.innerHTML = '';
+      searchInput.value = "";
+      noResultsFoundContainer.innerHTML = "";
       cumulativeFilter = data;
-      allCards.innerHTML = '';
+      allCards.innerHTML = "";
       allCards.appendChild(renderData(cumulativeFilter));
-      computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(cumulativeFilter)}`;
+      computeStatsContainer.textContent = "Resultados encontrados " + computeStats(cumulativeFilter);
     });
   });
 
   // Estadística: Dinámicamente modifica el contenido HTML de un elemento computeStatsContainer para mostrar el número total de películas calculado por la función computeStats
-  computeStatsContainer.textContent = `Resultados encontrados: ${computeStats(cumulativeFilter)}`;
+  computeStatsContainer.textContent = "Resultados encontrados " + computeStats(cumulativeFilter);
 
   // Estadística: Estudio con mayor cantidad de películas y el género que sobresale notablemente
   const metricsContainer = section.querySelector('.metrics');

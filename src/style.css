@@ -23,7 +23,7 @@ h1 {
   margin-top: 0px;
   letter-spacing: 2px;
 }
-h2 {
+/*h2 {
   padding: 170px 5px 0px 0px;
   text-align: center;
   font-family: "Bleak Chop";
@@ -32,7 +32,7 @@ h2 {
 h3 {
   padding: 20px;
   text-align: center;
-}
+}*/
 #logo {
   max-height: 180px;
   max-width: 180px;
@@ -117,8 +117,8 @@ button:hover {
   padding: 10px 0px 10px 0px;
 }
 .imgHome {
-  width: 64px;
-  height: 64px;
+  width: 40px;
+  height: 40px;
   display: flex;
   margin-left: 15px;
   padding: 0px 0px 8px 30px;
@@ -128,21 +128,21 @@ button:hover {
 
 p {
   width: 100%;
-  font-size: 17px;
+  font-size: 20px;
   color: rgb(255, 255, 255);
   font-family: "Hammersmith One", sans-serif;
   padding: 7px 0px;
 }
 .metrics {
   height: auto;
-  font-size: 10px;
+  font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   background-color: #ec004a;
   padding-bottom: 0px;
 }
 .computeStats {
-  font-size: 15px;
-  color: rgb(0, 0, 0);
+  font-size: 20px;
+  color: #ec004a;
   text-align: left;
   margin-left: 225px;
 }
@@ -150,7 +150,7 @@ p {
   padding-top: 20px opx;
 }
 .chatMss {
-  font-size: 20px;
+  font-size: 25px;
   color: #0e0e0e;
   text-align: center;
   margin: 15px 0px;
@@ -336,36 +336,28 @@ dd[itemprop="year"] {
 .sendButton img {
   width: 100%;
   height: 100%;
+}
 .apiText{
   color:#010101;
   font-family: "Bleak Chop";
   font-size: 30px;
 }
-#apiKeyInput{
-  font-size: 18px;
-  text-align: left;
-  padding: 15px 400px 15px 15px;
-  margin: 0px 6px 0px 10px;
-  box-shadow: 5px 5px 5px rgba(132, 132, 132, 0.3);
-  border: 0;
-  box-sizing: border-box;
-  border-radius: 8px;
-  outline: none;
-}
+
 #saveApiButton{
   font-size: 20px;
   font-weight: bold;
   border: none;
   background-color: #ec004a;
-  
-/* FOOTER COMPONENT */
-
   padding: 15px 15px 15px 15px;
   border-radius: 5px;
   box-shadow:5px 5px 10px rgba(0, 0, 0, 0.3);
   width: 20%;
   margin-left: -50px; 
 }
+#saveApiButton:hover {
+  background-color: rgba(31, 30, 30, 0.902);
+}
+
 #clearApiButton{
   font-size: 20px;
   font-weight: bold;
@@ -373,9 +365,7 @@ dd[itemprop="year"] {
   color: #ece9e2;
   background-color: #ec004a;
 }
-#saveApiButton:hover {
-  background-color: rgba(31, 30, 30, 0.902);
-}
+
 #clearApiButton:hover {
   background-color: rgba(31, 30, 30, 0.902);
 }
@@ -385,9 +375,11 @@ dd[itemprop="year"] {
   display: flex;
   padding: 0px 0px 8px 30px;
 }
+
+/* FOOTER COMPONENT */
 footer {
   color: white;
-  font-size: 20px;
+  font-size: 18px;
   /*position: static;*/
   bottom: 0;
   left: 0;

@@ -8,7 +8,7 @@ export const apiKeyView = () => {
   const apiViewHTML = `<h2>API KEY</h2> 
   <p class="apiText">¡Para interactuar con las péliculas, es necesario que ingreses tu API KEY!</p>
   <input class="apiKeyInput"
-  type="text"
+  type="password"
   placeholder="Ingresa tu API Key.."/></br>
   <button id="clearApiButton">Limpiar</button>
   <button id="saveApiButton">Guardar</button>`; // template string

@@ -9,5 +9,6 @@ export const chatCompletions = (apiKey, data) =>{
     },
     body: JSON.stringify(data),
   })
+  
 };
 

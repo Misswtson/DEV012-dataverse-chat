@@ -3,8 +3,7 @@ export const navBar = () => {
     <input
       type="search"
       id="inputFilter"
-      placeholder="Search"
-      <img id="input-Icon" src="./media/iconoLupa.png">
+      placeholder="Search..."
     <label for="genre"></label>
     <select id="genre" data-testid="select-filter" name="genre">
       <option disabled selected value="">Genero</option>

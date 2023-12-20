@@ -2,7 +2,7 @@ import { header } from "../components/header.js";
 import { secondaryNav } from "../components/secondaryNav.js";
 import { chatIA } from "../components/chatIA.js";
 import { footer } from "../components/footer.js";
-import { chatCompletions } from "../lib/openAiKey.js";
+import { chatCompletions } from "../lib/openAIKey.js";
 import { navigateTo } from "../router.js";
 import dataset from "../data/dataset.js";
 
@@ -15,14 +15,12 @@ const createDetailsMessage = () => {
 
   return nodoDetailsElement;
 };
-
-
 export const details = () => {
   const section = document.createElement("section");
   section.appendChild(header());
   section.appendChild(secondaryNav());
-  section.appendChild(chatIA());
   section.appendChild(createDetailsMessage());
+  section.appendChild(chatIA());
   section.appendChild(footer());
 
   const homeButton = section.querySelector(".secondaryNav");
@@ -51,10 +49,9 @@ export const details = () => {
     .catch((error) => {
       alert("Hubo un error al comunicarse con la API.");
     });
-
+console.log(chatCompletions);
   return section;
 };
 
-console.log(getOpenIAapi());
 
 
