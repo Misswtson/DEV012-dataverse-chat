@@ -1,18 +1,16 @@
 // Este archivo define las Routes e importa los componentes que se van a renderizar.
-import {setRoutes, setRootElement, onURLChange} from './router.js';
-import {home} from './views/home.js';
-import {errorPage} from './views/errorPage.js';
-import { apiKeyPage } from './views/apikeypage.js';
-import {details} from './views/details.js';
-import {panel} from './views/panel.js';
-import dataset from './data/dataset.js';
-
+import { setRoutes, setRootElement, onURLChange } from './router.js';
+import { home } from './views/home.js';
+import { errorPage } from './views/errorPage.js';
+import { password } from './views/password.js';
+import { details } from './views/details.js';
+import { panel } from './views/panel.js';
 
 // Define the routes and their associated views
 const routes = {
   '/': home,
   '/errorPage': errorPage,
-  '/apiKeyPage': apiKeyPage,
+  '/password': password,
   '/details': details,
   '/panel': panel,
 };
@@ -29,4 +27,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
   onURLChange(event.target.location.pathname);
 });
 
-window.onpopstate=onURLChange;
+window.onpopstate = onURLChange;

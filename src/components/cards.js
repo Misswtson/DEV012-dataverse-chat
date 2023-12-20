@@ -5,7 +5,7 @@ export const renderData = (data) => { //el ciclo es independiente del html
     const nodoCards = document.createElement("ul"); // Crea el Nodo 
     nodoCards.setAttribute('id','allCards') // crea un nodo nuevo con atributo - id 
     data.forEach((items) => {
-    htmlCards += `<li itemscope itemtype="PeliculasAnimacionJaponesa" class="itemcontainer" data-id="${items.id}">
+    htmlCards += `<li itemscope itemtype="PeliculasAnimacionJaponesa" class="itemContainer" data-id="${items.id}">
                   <dl itemscope itemtype="PeliculasAnimacionJaponesa">
                   <img src="${items.imageUrl}" alt="${items.name}"/>
                   <div class="texto">
@@ -25,7 +25,7 @@ export const renderData = (data) => { //el ciclo es independiente del html
     nodoCards.addEventListener("click", (e) => {
     e.preventDefault();
     if (savedApi === null) {
-    navigateTo("/apiKeyPage");
+    navigateTo("/password");
     }else {
     navigateTo("/details", element);
     }

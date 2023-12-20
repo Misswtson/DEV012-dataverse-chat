@@ -1,6 +1,4 @@
-/*En este archivo vas a manejar el enrutamiento de tu aplicación. Es un archivo que
- debes crearlo por tu cuenta. */
-
+/* En este archivo vas a manejar el enrutamiento de tu aplicación */
 
 // hace referencia al objeto que mapea las ROUTES del sitio.
 let ROUTES = {};
@@ -8,22 +6,22 @@ let ROUTES = {};
 // Hace referencia al elemento html en donde se dibujan los componentes.
 let rootElement = '';
 
-
 export const setRootElement = (newElementValue) => {
-    // Validar si el newElementValue es un objeto HTML.
-    rootElement = newElementValue;
-  }
-  
-  export const setRoutes = (newRoutesValue) => {
-    // optional Throw errors if routes isn't an object  
-   // optional Throw errors if routes doesn't define an /error route
-   // assign ROUTES
-    if (typeof newRoutesValue === "object") {
-      if (newRoutesValue["/errorPage"]) {
-        ROUTES = newRoutesValue;
-      }     
+  // Validar si el newElementValue es un objeto HTML.
+  rootElement = newElementValue;
+};
+
+export const setRoutes = (newRoutesValue) => {
+  // optional Throw errors if routes isn't an object
+  // optional Throw errors if routes doesn't define an /error route
+  // assign ROUTES
+  if (typeof newRoutesValue === 'object') {
+    if (newRoutesValue['/errorPage']) {
+      ROUTES = newRoutesValue;
     }
   }
+  Object.assign(ROUTES, newRoutesValue);
+};
 
   const renderView = (pathname, properties = {}) => {
     // clear the root element

@@ -1,29 +1,58 @@
 import { header } from "../components/header.js";
-import { homeBtn } from "../components/homeButton.js";
-import { navigateTo } from "../router.js";
+import { secondaryNav } from "../components/secondaryNav.js";
+import { chatIA } from "../components/chatIA.js";
 import { footer } from "../components/footer.js";
-import { getOpenIAapi } from "../lib/openAIKey.js";
+import { chatCompletions } from "../lib/openAiKey.js";
+import { navigateTo } from "../router.js";
+import dataset from "../data/dataset.js";
 
-export const details = () => {
-  const section = document.createElement("section");
-  section.appendChild(header());
-  section.appendChild(homeBtn());
-  section.appendChild(createDetailsMessage());
-  section.appendChild(footer());
-
-  const homeButton = section.querySelector(".homeButton");
-  homeButton.addEventListener("click",() => navigateTo("/"));
-  return section;
-};
-
-export const renderMovies = () => {
+const createDetailsMessage = () => {
   const detailsMessageHTML = `<h3>Conoce más acerca de esta película y sumérgete en detalles 
-  fascinantes a través de nuestro amigable chat.</h3>`; //template string
-  const nodoDetailsElement = document.createElement("h3"); //Nodo
+  fascinantes a través de nuestro amigable chat.</h3>`; // template string
+  const nodoDetailsElement = document.createElement("h3"); // Nodo
   nodoDetailsElement.innerHTML = detailsMessageHTML;
   nodoDetailsElement.classList.add("detailsHeading");
 
   return nodoDetailsElement;
+};
+
+
+export const details = () => {
+  const section = document.createElement("section");
+  section.appendChild(header());
+  section.appendChild(secondaryNav());
+  section.appendChild(chatIA());
+  section.appendChild(createDetailsMessage());
+  section.appendChild(footer());
+
+  const homeButton = section.querySelector(".secondaryNav");
+  homeButton.addEventListener("click", () => navigateTo("/"));
+
+  chatCompletions(localStorage.getItem("apiKey"), {
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "system",
+        content:
+          "Responde a mis preguntas como si fueras un personaje aleatorio de la película Akira, inicia tu respuesta presentandote. Responde todas las preguntas relacionadas con la película",
+      },
+      {
+        role: "user",
+        content: "Hola, hablame de Akira"
+      },
+    ],
+  })
+    .then((responseOpenIA) => {
+      responseOpenIA.json().then((responseJSObject) => {
+       console.log(responseJSObject);
+       console.log(responseJSObject.choices);
+      });
+    })
+    .catch((error) => {
+      alert("Hubo un error al comunicarse con la API.");
+    });
+
+  return section;
 };
 
 console.log(getOpenIAapi());

@@ -1,5 +1,3 @@
-
-
 export const navBar = () => {
     const htmlNav = `<nav>
     <input
@@ -67,11 +65,10 @@ export const navBar = () => {
     <button id="chat" data-testid="panel-chat">Chat</button>
     <button id="apiKey" data-testid="api-key">Api Key</button>
   </nav> 
-  <div class="metrics"> <br/> </div>
-  <p class="compute-stats"></p>
+  <div class="metrics"> </div>
   <div id="noResultsFound"></div>`; //Creates a template string
-    const nodoNavB = document.createElement("nav");// Creates a Nodo 
-    nodoNavB.innerHTML = htmlNav;
-    nodoNavB.classList.add("navComponent");
-    return nodoNavB;
-}
+  const nodoNavB = document.createElement("nav"); // Creates a Nodo
+  nodoNavB.innerHTML = htmlNav;
+  nodoNavB.classList.add("navComponent");
+  return nodoNavB;
+};
