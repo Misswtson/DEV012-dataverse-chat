@@ -1,36 +1,41 @@
 import { navigateTo } from "../router.js";
 
-export const renderData = (data) => { //el ciclo es independiente del html 
-    let htmlCards = "";
+export const cards= (data) => { //el ciclo es independiente del html 
     const nodoCards = document.createElement("ul"); // Crea el Nodo 
     nodoCards.setAttribute('id','allCards') // crea un nodo nuevo con atributo - id 
-    data.forEach((items) => {
-    htmlCards += `<li itemscope itemtype="PeliculasAnimacionJaponesa" class="itemContainer" data-id="${items.id}">
+    data.forEach((item) => {
+      const liItem = document.createElement('li');
+      liItem.setAttribute('itemscope', '');
+      liItem.setAttribute('itemtype', 'PeliculasAnimacionJaponesa');
+      liItem.setAttribute('data-id', 'PeliculasAnimacionJaponesa');
+      liItem.setAttribute('data-id', item.id);
+      liItem.classList.add('itemContainer');
+      liItem.innerHTML = 
+      `
                   <dl itemscope itemtype="PeliculasAnimacionJaponesa">
-                  <img src="${items.imageUrl}" alt="${items.name}"/>
+                  <img class="movieImg"src="${item.imageUrl}" alt="${item.name}"/>
                   <div class="texto">
-                  <dt></dt><dd itemprop="studio">${items.facts.studio}</dd>
-                  <dt></dt><dd itemprop="name">${items.name}</dd>
-                  <dt></dt><dd itemprop="shortDescription">${items.shortDescription}</dd>
-                  <dt></dt><dd itemprop="genre">${items.facts.genre}</dd>
-                  <dt></dt><dd itemprop="year">${items.facts.year}</dd>
+                  <dt></dt><dd itemprop="studio">${item.facts.studio}</dd>
+                  <dt></dt><dd itemprop="name">${item.name}</dd>
+                  <dt></dt><dd itemprop="shortDescription">${item.shortDescription}</dd>
+                  <dt></dt><dd itemprop="genre">${item.facts.genre}</dd>
+                  <dt></dt><dd itemprop="year">${item.facts.year}</dd>
                   </div>
                 </dl>
-              </li>`; //template string
-    });
-    nodoCards.innerHTML = htmlCards;// Convierte el string en un HTML
-    nodoCards.classList.add("cardsContainer");
-    
-    const savedApi = localStorage.getItem("apiKey");
-    nodoCards.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (savedApi === null) {
-    navigateTo("/details");
-    }else {
-    navigateTo("/pasword", element);
-    }
-    });
+      `;
 
+      liItem.addEventListener('click', function(e){
+        e.preventDefault();
+        const savedApi = localStorage.getItem("apiKey");
+        if (savedApi === null) {
+        navigateTo("/password");
+        }else {
+        navigateTo(`/details`, item);
+        }
+      })
+      nodoCards.appendChild(liItem);
+    }); 
+    nodoCards.classList.add("cardsContainer");
     return nodoCards;
   };
 

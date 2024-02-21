@@ -153,7 +153,7 @@ export default [ //colocarle comillas a las claves
       description:
         "Dirigida por Yoshifumi Kondō y producida por Studio Ghibli, es una conmovedora película de animación que sigue la historia de Shizuku, una joven apasionada por la lectura y la escritura. Cuando descubre un gato curioso en un tren, su búsqueda de un antiguo violín la lleva a descubrir su pasión y determinación. La película es un cálido retrato de la adolescencia, el amor y la búsqueda de los sueños, con una banda sonora encantadora y animación detallada. Whisper of the Heart es un tesoro de Ghibli que celebra la creatividad y el autodescubrimiento.",
       imageUrl:
-        "https://play-lh.googleusercontent.com/UnXdxbMaOoyax8EypJfIR-gibJ2UiHEIcx06Qwd5u8hsHb69Iw1DXsVG352EoDzmHZvzNhzqZWd3iv2tcg",
+      "https://image.tmdb.org/t/p/original/uwnL8l9692rYmuzmrIdTUiu8tOc.jpg",
       facts: {
         year: 1995,
         genre: "Drama · Romance",

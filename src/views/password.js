@@ -1,33 +1,55 @@
-import { header } from '../components/header.js';
-import { secondaryNav } from '../components/secondaryNav.js';
-import { footer } from '../components/footer.js';
-// import { chatCompletions } from '../lib/openAiKey.js';
-import { navigateTo } from '../router.js';
+import { footer } from "../components/footer.js";
+import { navigateTo } from "../router.js";
+import { header } from "../components/header.js";
 
-export const apiKeyView = () => {
-  const apiViewHTML = `<h2>API KEY</h2> 
-  <p class="apiText">¡Para interactuar con las péliculas, es necesario que ingreses tu API KEY!</p>
-  <input class="apiKeyInput"
-  type="password"
-  placeholder="Ingresa tu API Key.."/></br>
-  <button id="clearApiButton">Limpiar</button>
-  <button id="saveApiButton">Guardar</button>`; // template string
-  const nodoApiView = document.createElement('section'); // Nodo
-  nodoApiView.innerHTML = apiViewHTML;
-  nodoApiView.classList.add('apiBody');
-
-  return nodoApiView;
-};
-
+// CREATES THE HTML CONTENT
 export const password = () => {
-  const section = document.createElement('section');
+  const passwordView = () => {
+    const apiView = `<h2>¡Bienvenid@!</h2> 
+    <p class="apiText">Para acceder al chat con cada una de las películas, se deberá ingresar una Api Key, la cúal podrás encontrar en el sitio web de Openai.com</p>
+    <input class="apiKeyInput"
+    type="password"
+    placeholder="Ingresar API KEY..."/>
+    <button id="clearApiButton">Limpiar</button>
+    <button id="saveApiButton">Guardar</button>`;
+
+    const nodoApiView = document.createElement("section");
+    nodoApiView.innerHTML = apiView;
+    nodoApiView.classList.add("apiSection");
+
+    return nodoApiView;
+  };
+
+  const section = document.createElement("section");
   section.appendChild(header());
-  section.appendChild(secondaryNav());
-  section.appendChild(apiKeyView());
+  section.appendChild(passwordView());
   section.appendChild(footer());
 
-  const homeButton = section.querySelector('.secondaryNav');
-  homeButton.addEventListener('click', () => navigateTo('/'));
+  const input = section.querySelector(".apiKeyInput");
 
-  return section;
-};
+  const apiKeySaveBtn = section.querySelector("#saveApiButton");
+
+  apiKeySaveBtn.addEventListener("click", () => {
+    localStorage.setItem("apiKey", input.value);
+    if(input.value === "" ) {
+      alert("Ingrese su API key")
+    } else {
+        navigateTo("/");
+      }
+    });
+
+    const apiKeyClearBtn = section.querySelector("#clearApiButton");
+    apiKeyClearBtn.addEventListener("click", () => {
+      localStorage.removeItem("apiKey");
+      input.value = "";
+      console.log(apiKeyClearBtn);
+
+      
+    });
+  
+    return section;
+
+  };
+
+/*} else if (alert("Validando API key"));
+chatCompletions(input);*/

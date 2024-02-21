@@ -1,4 +1,5 @@
-/* eslint-disable import/prefer-default-export */
+import { navigateTo } from "../router.js";
+
 export const secondaryNav = () => {
   const sectionHomeButton = document.createElement('section');
   sectionHomeButton.classList.add('nav');
@@ -10,6 +11,7 @@ export const secondaryNav = () => {
 
   homeButton.appendChild(img);
   sectionHomeButton.appendChild(homeButton);
-
+  const homeBtn = sectionHomeButton.querySelector('.secondaryNav');
+  homeBtn.addEventListener('click', () => navigateTo('/'));
   return sectionHomeButton;
 };

@@ -1,57 +1,107 @@
 import { header } from "../components/header.js";
 import { secondaryNav } from "../components/secondaryNav.js";
-import { chatIA } from "../components/chatIA.js";
+import { chatIa } from "../components/chatIa.js";
 import { footer } from "../components/footer.js";
-import { chatCompletions } from "../lib/openAIKey.js";
-import { navigateTo } from "../router.js";
-import dataset from "../data/dataset.js";
+import data from '../data/dataset.js';
+import { chatCompletions } from "../lib/openAiKey.js";
 
-const createDetailsMessage = () => {
-  const detailsMessageHTML = `<h3>Conoce más acerca de esta película y sumérgete en detalles 
-  fascinantes a través de nuestro amigable chat.</h3>`; // template string
-  const nodoDetailsElement = document.createElement("h3"); // Nodo
-  nodoDetailsElement.innerHTML = detailsMessageHTML;
-  nodoDetailsElement.classList.add("detailsHeading");
 
-  return nodoDetailsElement;
-};
-export const details = () => {
+export const details = (properties) => {
+  console.log("---HELLO FROM THE OTHER SIDE-->", properties);
   const section = document.createElement("section");
   section.appendChild(header());
   section.appendChild(secondaryNav());
-  section.appendChild(createDetailsMessage());
-  section.appendChild(chatIA());
+
+  // RENDER MOVIE DETAILS
+
+  const containerMovie = document.createElement("section");
+  const movieView = ` <section>
+  <div class="moviePoster">
+  <img class="imgMovie"src="${properties.imageUrl}"/>
+  <h3 class="movieTittle">Descripción</h3>
+  <p class="description">${properties.description}</p>
+  </div>
+  </section> `;
+
+  containerMovie.innerHTML = movieView;
+  section.appendChild(containerMovie);
+  section.appendChild(chatIa());
   section.appendChild(footer());
 
-  const homeButton = section.querySelector(".secondaryNav");
-  homeButton.addEventListener("click", () => navigateTo("/"));
+  // RENDER USER ELEMENTS
 
-  chatCompletions(localStorage.getItem("apiKey"), {
-    model: "gpt-3.5-turbo",
-    messages: [
-      {
-        role: "system",
-        content:
-          "Responde a mis preguntas como si fueras un personaje aleatorio de la película Akira, inicia tu respuesta presentandote. Responde todas las preguntas relacionadas con la película",
-      },
-      {
-        role: "user",
-        content: "Hola, hablame de Akira"
-      },
-    ],
-  })
-    .then((responseOpenIA) => {
-      responseOpenIA.json().then((responseJSObject) => {
-       console.log(responseJSObject);
-       console.log(responseJSObject.choices);
-      });
+  //IMG
+  const renderImg = section.querySelector(".user");
+  const movieUserImg = document.createElement("img");
+  movieUserImg.src = `${properties.imageUrl}`;
+  movieUserImg.classList.add("imgUser");
+  renderImg.appendChild(movieUserImg);
+
+  // NAME
+  const renderName = section.querySelector(".user");
+  const movieUserName = document.createElement("h4");
+  movieUserName.innerHTML = `${properties.name}`;
+  movieUserName.style.color = "#ec004a";
+  movieUserName.classList.add("userName");
+  renderName.appendChild(movieUserName);
+
+  // SENDBUTTON (DOM)
+
+  const userText = section.querySelector("#userText");
+  const chatSection = section.querySelector(".chats");
+  const sendButton = section.querySelector(".sendButton");
+
+  sendButton.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (userText.value) {
+      console.log(userText.value);
+
+      const showUserText = document.createElement("p");
+      showUserText.innerHTML= userText.value;
+      showUserText.classList.add("messagesU");
+      chatSection.appendChild(showUserText);
+    
+      const clearTextarea = section.querySelector("input");
+      clearTextarea.value = "";
+    }
+    // API RESPONSE
+
+    const personaje = data.map(properties => properties.name);
+    chatCompletions(localStorage.getItem("apiKey"), {
+      model: "gpt-3.5-turbo",
+      messages: [
+        {
+          role: "system",
+          content: `Eres ${personaje} el protagonista de la película, presentate y responde a todas las preguntas sobre tu vida`,
+        },
+        {
+          role: "user",
+          content: userText.value,
+        },
+      ],
     })
-    .catch((error) => {
-      alert("Hubo un error al comunicarse con la API.");
+      .then((response) => {
+        return response.json();
+      })
+        .then((data) => {
+          console.log(data);
+          console.log(data.choices);
+          const apiAnswer = document.createElement("p");
+          apiAnswer.textContent = data.choices[0].message.content;
+          apiAnswer.classList.add("messagesApi");
+          apiAnswer.style.color = "black";
+          chatSection.appendChild(apiAnswer);
+        })
+        .catch((error) => {
+          console.error("Error en la solicitud:", error);
+          alert("Hubo un error al comunicarse con la API.");
+        })
     });
-console.log(chatCompletions);
-  return section;
+  
+    return section;
 };
+ 
+  
 
-
-
+//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

@@ -61,8 +61,7 @@ export const navBar = () => {
       <option value="desc">Descendente</option>
     </select>
     <button id="button" data-testid="button-clear">Limpiar</button>
-    <button id="chat" data-testid="panel-chat">Chat</button>
-    <button id="apiKey" data-testid="api-key">Api Key</button>
+    <button id="apiKey" data-testid="api-key">Acceder</button>
   </nav> 
   <div class="metrics"> </div>
   <div id="noResultsFound"></div>`; //Creates a template string
