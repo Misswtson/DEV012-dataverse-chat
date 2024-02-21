@@ -51,5 +51,3 @@ export const password = () => {
 
   };
 
-/*} else if (alert("Validando API key"));
-chatCompletions(input);*/

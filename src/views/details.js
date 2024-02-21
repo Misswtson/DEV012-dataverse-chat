@@ -104,4 +104,3 @@ export const details = (properties) => {
  
   
 
-//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
