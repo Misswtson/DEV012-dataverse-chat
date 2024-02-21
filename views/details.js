@@ -1,6 +1,6 @@
 import { header } from "../components/header.js";
 import { secondaryNav } from "../components/secondaryNav.js";
-import { chatIa } from "../components/chatIa.js";
+import { chatIa } from "../components/chatIA.js";
 import { footer } from "../components/footer.js";
 import data from '../data/dataset.js';
 import { chatCompletions } from "../lib/openAiKey.js";
