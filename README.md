@@ -159,6 +159,6 @@ Ambos creados y modificados en Figma
 
 ## 8. Despliegue en Vercel
 
-Para poder acceder, haz click en el sigiente enlace: 
+Para poder acceder, haz click en el sigiente enlace: https://dev-012-dataverse-chat-omega.vercel.app/ 
 
 
