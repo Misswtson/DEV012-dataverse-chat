@@ -1,5 +1,5 @@
 
-// RENDER HEADER COMPONENTS
+// RENDER HEADER COMPONENT
 export const header = () => {
   const htmlHeader = `<img id="logo" src="./media/logokaonashi.png" alt="Logo Kaonashi Movies"/> 
     <h1>Kaonashi Movies</h1>`; //Creates a template string
