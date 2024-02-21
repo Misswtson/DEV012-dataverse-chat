@@ -159,5 +159,5 @@ Ambos creados y modificados en Figma
 
 ## 8. Despliegue en Vercel
 
-Para poder acceder, haz click en el sigiente enlace: dev-012-dataverse-chat-lpj5p6lzz-emmas-projects-cc952695.vercel.app
+Para poder acceder, haz click en el sigiente enlace: dev-012-dataverse-chat-iyq9imzwk-emmas-projects-cc952695.vercel.app
 
