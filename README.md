@@ -25,7 +25,7 @@ artificial.
 ## 2. Resumen del proyecto
 
 Este proyecto convierte la aplicación desarrollada
-en el proyecto previo (Dataverse) en una Single Page Aplication (SPA)
+en el proyecto previo (Dataverse) en una Single Page Application (SPA)
 manteniendo las funcionalidades de visualizar, filtrar, ordenar y
 calcular alguna estadística, adicionando una nueva vista para
 consultar información detallada de cada película y agregando
